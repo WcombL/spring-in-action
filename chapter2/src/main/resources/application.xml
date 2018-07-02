@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--自动扫描-->
+    <context:component-scan base-package="com.lilei"/>
+
+
+    <!--<bean id="cdPlayer" class="com.lilei.beans.CDPlayer" c:cdx-ref="compactDisc"/>-->
+    <!--<bean id="cdPlayer" class="com.lilei.beans.CDPlayer" c:_0-ref="compactDisc"/>-->
+
+    <!--<bean id="compactDisc" class="com.lilei.beans.SgtPeppers"/>-->
+
+    <bean id="reallyBlankDisc" class="com.lilei.beans.BlankDisc">
+        <property name="title" value="Sgt. Pepper's Lonely Hearts Club Band"/>
+        <property name="artist" value="The Beatles"/>
+        <property name="tracks">
+            <list>
+                <value>Sgt. Pepper's Lonely Hearts Club Band</value>
+                <value>With a Little Help from My Friends</value>
+                <value>Lucy in the Sky with Diamonds</value>
+                <value>Getting Better</value>
+                <value>Fixing a Hole</value>
+                <!-- ...other tracks omitted for brevity... -->
+            </list>
+        </property>
+    </bean>
+    <bean id="compactDisc"
+          class="com.lilei.beans.BlankDisc"
+          p:title="Sgt. Pepper's Lonely Hearts Club Band"
+          p:artist="The Beatles"
+          p:tracks-ref="trackList" />
+    <util:list id="trackList">
+        <value>Sgt. Pepper's Lonely Hearts Club Band</value>
+        <value>With a Little Help from My Friends</value>
+        <value>Lucy in the Sky with Diamonds</value>
+        <value>Getting Better</value>
+        <value>Fixing a Hole</value>
+        <!-- ...other tracks omitted for brevity... -->
+    </util:list>
+</beans>
